@@ -50,7 +50,6 @@ export class MemberDetailComponent implements OnInit {
   ];
     this.galleryImages = this.getImages();
     console.log(this.galleryImages);
-    
 }
   getImages() {
     const imageUrls = [];
