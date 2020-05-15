@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.1",
     "@auth0/angular-jwt": "^2.0.0",
     "@kolkov/ngx-gallery": "^1.2.0",
+    "ad-file-upload": "0.0.3",
     "alertifyjs": "^1.11.1",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.1.1",

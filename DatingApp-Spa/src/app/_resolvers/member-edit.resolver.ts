@@ -12,7 +12,7 @@ import { AuthService } from '../_services/auth.service';
 export class MemberEditResolver implements Resolve<User> {
 
     constructor(private userService: UserService, private authService: AuthService,
-         private router: Router, private alertify: AlertifyService){}
+                private router: Router, private alertify: AlertifyService){}
 
     resolve(route: ActivatedRouteSnapshot): Observable<User>{
         return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
