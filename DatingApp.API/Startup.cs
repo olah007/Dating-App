@@ -38,7 +38,8 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(opt => {
-                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    opt.SerializerSettings.ReferenceLoopHandling = 
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
@@ -52,11 +53,10 @@ namespace DatingApp.API
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                        .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-
+                            .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
                         ValidateIssuer = false,
                         ValidateAudience = false
-                    }; 
+                    };
                 });
         }
 
@@ -69,27 +69,27 @@ namespace DatingApp.API
             }
             else
             {
-                app.UseExceptionHandler(Builder => {
-                    Builder.Run(async context => {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                app.UseExceptionHandler(builder => {
+                    builder.Run(async context => {
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                    var error = context.Features.Get<IExceptionHandlerFeature>();
-                    if (error != null)
-                    {
-                        context.Response.AddApplicationError(error.Error.Message);
-                        await context.Response.WriteAsync(error.Error.Message);
-                    }
-                    }
-                    );
-                }
-            );
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                        if (error != null) 
+                        {
+                            context.Response.AddApplicationError(error.Error.Message);
+                            await context.Response.WriteAsync(error.Error.Message);
+                        }
+                    });
+                });
+                // app.UseHsts();
+            }
 
             // app.UseHttpsRedirection();
             // seeder.SeedUsers();
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             app.UseAuthentication();
             app.UseMvc();
-
         }
-    }}
+    }
 }
