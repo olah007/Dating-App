@@ -28,7 +28,9 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.6.1",
+    "ngx-timeago": "^1.0.4",
     "rxjs": "~6.5.4",
+    "time-ago-pipe": "^1.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
