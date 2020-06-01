@@ -11,6 +11,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { AdFileUploadModule } from 'ad-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimeagoModule } from 'ngx-timeago';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -62,6 +63,7 @@ export function tokenGetter() {
       BsDatepickerModule.forRoot(),
       TimeagoModule.forRoot(),
       TabsModule.forRoot(),
+      PaginationModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
       AdFileUploadModule,
