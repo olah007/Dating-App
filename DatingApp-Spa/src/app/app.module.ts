@@ -81,7 +81,7 @@ export function tokenGetter() {
             // tslint:disable-next-line:object-literal-shorthand
             tokenGetter: tokenGetter,
             whitelistedDomains: ['localhost:5000'],
-            blacklistedRoutes: ['localhost:5000/api/auth']
+            blacklistedRoutes: ['localhost:5000/api/auth/register']
          }
       })
    ],
